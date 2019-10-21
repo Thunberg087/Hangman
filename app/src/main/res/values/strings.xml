@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="startGameButton">Spela</string>
+    <string name="aboutButton">Om</string>
+    <string name="aboutText">Programmerad av Jonathan Thunberg</string>
+    <string name="guessButtonGame">Gissa!</string>
+</resources>
