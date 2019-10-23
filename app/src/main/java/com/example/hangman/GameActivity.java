@@ -1,6 +1,7 @@
 package com.example.hangman;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
@@ -18,6 +18,10 @@ public class GameActivity extends AppCompatActivity {
     EditText letterInput;
     TextView guessWordTextView;
     ArrayList<String> words = new ArrayList();
+    String guessWord;
+    StringBuilder tempWord = new StringBuilder("");
+    ArrayList<Character> triedCharacters = new ArrayList<>();
+    int guessesLeft = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
         words.add("telefon");
         words.add("gris");
         words.add("flygplan");
-        words.add("ITHS");
+        words.add("iths");
         words.add("android");
         words.add("varmkorv");
         words.add("kiosk");
@@ -41,26 +45,18 @@ public class GameActivity extends AppCompatActivity {
 
         Random rand = new Random();
 
-        String guessWord = words.get(rand.nextInt(words.size()));
+        guessWord = words.get(rand.nextInt(words.size()));
+
 
 
         for (int i = 0;i < guessWord.length(); i++){
-
+            tempWord.append("_");
         }
 
 
-        guessWordTextView.setText(guessWord);
+        guessWordTextView.setText(tempWord);
 
-
-
-
-        ArrayList<Character> guessWordArray = new ArrayList<>();
-
-        for (int i = 0;i < guessWord.length(); i++){
-            guessWordArray.add(guessWord.charAt(i));
-        }
-
-        System.out.println(Arrays.toString(guessWordArray.toArray()));
+        Log.d("awd", guessWord);
     }
 
 
@@ -68,11 +64,42 @@ public class GameActivity extends AppCompatActivity {
 
         Toast toast;
 
-        if (letterInput.getText().toString().length() == 0) {
-            toast = Toast.makeText(getApplicationContext(), "Välj en bokstav först", Toast.LENGTH_SHORT);
+        String letter = letterInput.getText().toString();
+
+        if (letter.length() == 0) {
+            toast = Toast.makeText(getApplicationContext(), "Välj en bokstav", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 150);
             toast.show();
+            return;
         }
+
+        for (int i = 0;i < triedCharacters.size(); i++){
+            if (letter.charAt(0) == triedCharacters.get(i)) {
+                toast = Toast.makeText(getApplicationContext(), "Du har redan provat den bokstaven", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 150);
+                toast.show();
+                return;
+            }
+        }
+
+        boolean anyCorrect = false;
+
+        for (int i = 0;i < guessWord.length(); i++){
+            if (letter.charAt(0) == guessWord.charAt(i)) {
+                tempWord.setCharAt(i, letter.charAt(0));
+                anyCorrect = true;
+            }
+        }
+
+        triedCharacters.add(letter.charAt(0));
+
+        if (!anyCorrect) {
+
+        }
+
+
+
+        guessWordTextView.setText(tempWord.toString());
 
 
     }
