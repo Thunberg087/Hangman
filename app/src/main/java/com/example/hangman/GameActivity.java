@@ -1,5 +1,6 @@
 package com.example.hangman;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,7 +20,7 @@ public class GameActivity extends AppCompatActivity {
     TextView guessWordTextView;
     ArrayList<String> words = new ArrayList();
     String guessWord;
-    StringBuilder tempWord = new StringBuilder("");
+    StringBuilder tempWord;
     ArrayList<Character> triedCharacters = new ArrayList<>();
     int guessesLeft = 10;
 
@@ -28,6 +29,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        startGame();
+
+    }
+
+
+    public void startGame() {
         letterInput = findViewById(R.id.letterInput);
 
         guessWordTextView = findViewById(R.id.guessWordTextView);
@@ -47,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
         guessWord = words.get(rand.nextInt(words.size()));
 
-
+        tempWord  = new StringBuilder("");
 
         for (int i = 0;i < guessWord.length(); i++){
             tempWord.append("_");
@@ -60,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    public void guessLetter(View view) {
+    public void guessLetter() {
 
         Toast toast;
 
@@ -102,5 +109,15 @@ public class GameActivity extends AppCompatActivity {
         guessWordTextView.setText(tempWord.toString());
 
 
+    }
+
+
+    public void gotoMainMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void startGameBtnPressed(View view) {
+        startGame();
     }
 }

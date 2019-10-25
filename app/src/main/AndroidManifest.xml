@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".GameActivity"></activity>
+        <activity
+            android:name=".GameActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageButton
+        android:id="@+id/gotoMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_go_back"
+        tools:ignore="ContentDescription"
+        android:onClick="gotoMainMenu"
+       />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_word_button"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:onClick="startGameBtnPressed"
+        />
+
+</androidx.appcompat.widget.Toolbar>

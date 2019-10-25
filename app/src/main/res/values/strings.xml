@@ -4,4 +4,7 @@
     <string name="aboutButton">Om</string>
     <string name="aboutText">Programmerad av Jonathan Thunberg</string>
     <string name="guessButtonGame">Gissa!</string>
+    <string name="restart_game_action">Restart game</string>
+    <string name="main_menu_action">Main menu</string>
+    <string name="new_word_button">nytt ord</string>
 </resources>

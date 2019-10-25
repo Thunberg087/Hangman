@@ -6,11 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/letterInput"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits="abcdefghijklmnopqrstuvwxyzåäö"
         android:ems="10"
         android:maxLength="1"
         android:textAlignment="center"
